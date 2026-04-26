@@ -1,3 +1,7 @@
+'''
+this is for hashing, for intergity
+'''
+
 import hashlib
 
 def hash_data(data: bytes) -> str:
