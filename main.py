@@ -42,7 +42,7 @@ class hybrid():
 
     #main hybrid code
     #actually important part
-    def hb_encrypt (message: str):
+    def hb_encrypt(message: str):
         #first generate aes  key
         aes_key = Fernet.generate_key()
         cipher = Fernet(aes_key)

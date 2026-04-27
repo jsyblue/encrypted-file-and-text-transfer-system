@@ -1,4 +1,5 @@
 from cryptography.hazmat.primitives.asymmetric import padding
+# import hashing
 
 # digital signature
 def sign_data(data: bytes, private_key):
