@@ -1,0 +1,4 @@
+DEBUG:log:debug2 working
+INFO:log:info working
+ERROR:log:error working 
+WARNING:log:warning working

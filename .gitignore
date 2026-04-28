@@ -1,0 +1,8 @@
+# cache
+logging/__pycache__/
+
+# environments
+.venv/
+.env/
+venv/
+env/
