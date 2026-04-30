@@ -66,7 +66,7 @@ def hb_encrypt(message: str):
 
 def hb_decryption(encrypted_message,encrypted_key):
     #decrypt AES key with RSA
-    private_key = hybrid.load_private_key()
+    private_key = load_private_key()
     aes_key = private_key.decrypt(
         encrypted_key,
         padding.OAEP(
@@ -88,12 +88,10 @@ def hb_decryption(encrypted_message,encrypted_key):
 if __name__ == "__main__":
     message = input("enter a text> ")
 
-    encrypted_msg, encrypted_key = hybrid.hb_encrypt(message)
+    encrypted_msg, encrypted_key = hb_encrypt(message)
 
     print("encrypted Message: ", encrypted_msg)
     print("encrypted aes key: ", encrypted_key)
 
-    decrypted_msg = hybrid.hb_decrypt(encrypted_msg, encrypted_key)
+    decrypted_msg = hb_decryption(encrypted_msg, encrypted_key)
     print("decrypt Message: ", decrypted_msg)
-
-a

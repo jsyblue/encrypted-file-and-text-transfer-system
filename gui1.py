@@ -1,3 +1,5 @@
+from hybrid_chat import *
+from hybrid_file import *
 import tkinter as tk
 #add a timer system later
 
