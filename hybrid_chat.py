@@ -23,7 +23,7 @@ def generate_rsa_keys():
             encryption_algorithm=serialization.NoEncryption()
         ))
         #save publickey
-    with open("private.pem","wb")as f:
+    with open("public.pem","wb")as f:
         f.write(public_key.public_bytes(
             encoding=serialization.Encoding.PEM,
             format=serialization.PublicFormat.SubjectPublicKeyInfo
@@ -86,6 +86,7 @@ def hb_decryption(encrypted_message,encrypted_key):
     #testing
 
 if __name__ == "__main__":
+    generate_rsa_keys()
     message = input("enter a text> ")
 
     encrypted_msg, encrypted_key = hb_encrypt(message)
