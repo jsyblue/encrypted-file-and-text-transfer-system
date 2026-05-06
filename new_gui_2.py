@@ -18,6 +18,7 @@ class HybridGUI:
         # =========================
         self.net = PeerNetwork()
         self.net.start_server()
+        self.on_message = self.receive_message
 
         # =========================
         # DARK MODE
@@ -146,6 +147,24 @@ class HybridGUI:
 
         except Exception as e:
             self.file_history.insert(tk.END, f"Error: {e}\n")
+    
+    def receive_message(self, sender, message):
+    # Tkinter-safe update (important because networking runs in another thread)
+        self.root.after(0, self._display_message, sender, message)
+    def _display_message(self, sender, message):
+        self.chat_history.insert(
+            tk.END,
+            f"{sender}: {message}\n"
+        )
+
+        self.chat_history.see(tk.END)
+
+        self.chat_log.insert(
+            tk.END,
+            "Message received\n"
+        )
+
+        self.chat_log.see(tk.END)
 
     # =========================
     # NETWORK PAGE
