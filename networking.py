@@ -9,6 +9,7 @@ class PeerNetwork:
         self.host = host
         self.port = port
         self.server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        self.on_message = None
 
     # Start listening for incoming encrypted messages
     def start_server(self):
@@ -24,7 +25,15 @@ class PeerNetwork:
             conn, addr = self.server.accept()
 
             try:
-                data = conn.recv(65536)
+                data = b""
+
+                while True:
+                    packet = conn.recv(4096)
+
+                    if not packet:
+                        break
+
+                    data += packet
 
                 if data:
                     encrypted_message, encrypted_key = pickle.loads(data)
@@ -34,7 +43,8 @@ class PeerNetwork:
                         encrypted_key
                     )
 
-                    print(f"\nMessage from {addr[0]}: {decrypted}")
+                    if self.on_message:
+                        self.on_message(addr[0], decrypted)
 
             except Exception as e:
                 print("Receive error:", e)
