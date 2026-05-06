@@ -28,6 +28,7 @@ def generate_rsa_keys():
             encoding=serialization.Encoding.PEM,
             format=serialization.PublicFormat.SubjectPublicKeyInfo
         ))
+        return private_key, public_key
 
 
 def load_public_key():

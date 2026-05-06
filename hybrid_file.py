@@ -35,12 +35,15 @@ def encrypt_file(file_path):
     # Save encrypted file
     with open(file_path + ".enc", "wb") as f:
         f.write(nonce + ciphertext)
+        file_enc = nonce + ciphertext
 
     # Save encrypted AES key
     with open(file_path + ".key", "wb") as f:
         f.write(encrypted_key)
+        file_key = encrypted_key
 
     print("Encryption complete")
+    return file_enc, file_key
 
 
 def decrypt_file(enc_file, key_file):
@@ -83,7 +86,3 @@ def decrypt_file(enc_file, key_file):
 
     print(f"{output_file} restored successfully")
 
-
-# Test
-encrypt_file("test.txt")
-decrypt_file("test.txt.enc", "test.txt.key")

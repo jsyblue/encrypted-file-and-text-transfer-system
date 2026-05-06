@@ -3,7 +3,26 @@ from tkinter import filedialog, messagebox
 from hybrid_chat import *
 from hybrid_file import *
 
+"""from networking import PeerNetwork
+from hybrid_chat import *
 
+generate_rsa_keys()
+
+network = PeerNetwork()
+network.start_server()
+
+peer_ip = input("Enter peer IP: ")
+
+while True:
+    msg = input("You: ")
+
+    encrypted_msg, encrypted_key = hb_encrypt(msg)
+
+    network.send_message(
+        peer_ip,
+        encrypted_msg,
+        encrypted_key
+    )"""
 #     encrypt_file,
 #     decrypt_file,
 #     encrypt_message,
